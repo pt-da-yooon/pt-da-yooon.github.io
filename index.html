@@ -1,0 +1,355 @@
+﻿<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ptです</title>
+    <link rel="icon" href="img/favicon-32.png" sizes="32x32" type="image/png">
+    <link rel="shortcut icon" href="img/favicon-32.png">
+    <link rel="apple-touch-icon" href="img/favicon-32.png">
+    <meta name="theme-color" content="#02ADBC">
+    <!-- Open Graph -->
+    <meta property="og:title" content="ptです" />
+    <meta property="og:description" content="ptやで！" />
+    <meta property="og:url" content="https://pt-da-yooon.com/" />
+    <meta property="og:type" content="website" />
+    <meta property="og:image" content="https://pt-da-yooon.com/img/top.png" />
+    <link rel="stylesheet" href="styles.css">
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-10R9WFKEZE"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-10R9WFKEZE');
+    </script>
+</head>
+<body>
+    <!-- Header / Navigation -->
+    <header>
+        <nav>
+            <div class="logo">
+                <img src="img/icon.png" alt="pt icon" class="logo-icon">
+                <span>pt</span>
+                <span class="logo-handle">@panda3tt</span>
+            </div>
+            <ul class="nav-links">
+                <li><a href="#about">About</a></li>
+                <li><a href="#works">作ったもの</a></li>
+                <li><a href="#awards">活動履歴</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Hero -->
+    <section id="hero">
+        <img src="img/top.png" alt="hero" class="hero-image" />
+        <div class="hero-content">
+            <div class="hero-title-wrapper">
+                <img src="img/icon.png" alt="pt icon" class="hero-icon">
+                <h1 class="hero-title">pt<span class="hero-handle">@panda3tt</span></h1>
+            </div>
+        </div>
+    </section>
+
+    <!-- About -->
+    <section id="about">
+        <div class="container">
+            <h2 class="section-title">About</h2>
+            <div class="about-content">
+                <p>ptって名前でやらせてもらってます</p>
+                <p>作るの好き</p>
+                <!-- 自己紹介動画: 自動再生（muted）を試み、ブロックされた場合はオーバーレイでユーザー操作を促します -->
+                <div class="about-video" aria-hidden="false">
+                    <video id="aboutIntro" class="about-intro-video" playsinline muted autoplay loop poster="img/intro-poster.jpg" aria-label="紹介動画">
+                        <source src="media/web.mp4" type="video/mp4">
+                        
+                    </video>
+                    <button class="play-overlay" aria-hidden="true" title="動画を再生">▶</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Works -->
+    <section id="works">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">作ったもの</h2>
+                <p class="section-subtitle">作りたいもの作ってます</p>
+            </div>
+            <div class="project-grid">
+                <article class="project-card">
+                    <div class="project-thumb">
+                        <img src="img/p09.png" alt="パンダで賑やかしたい">
+                    </div>
+                    <div class="project-body">
+                        <h3><a href="https://protopedia.net/prototype/6459" target="_blank" rel="noopener noreferrer">パンダで賑やかしたい</a></h3>
+                        <p class="project-desc">たまににぎやかしてます</p>
+                        <div class="project-links">
+                            <a href="https://protopedia.net/prototype/6459" target="_blank" rel="noopener noreferrer" class="link-badge proto">ProtoPedia</a>
+                            <a href="https://www.youtube.com/watch?v=FNTgreieZzc" target="_blank" rel="noopener noreferrer" class="link-badge youtube">YouTube</a>
+                        </div>
+                    </div>
+                </article>
+                <article class="project-card">
+                    <div class="project-thumb">
+                        <img src="img/p08.png" alt="Minecraft Teleport Dialer">
+                    </div>
+                    <div class="project-body">
+                        <h3><a href="https://protopedia.net/prototype/7104" target="_blank" rel="noopener noreferrer">Minecraft Teleport Dialer</a></h3>
+                        <p class="project-desc">マイクラたのしい</p>
+                        <div class="project-links">
+                            <a href="https://protopedia.net/prototype/7104" target="_blank" rel="noopener noreferrer" class="link-badge proto">ProtoPedia</a>
+                            <a href="https://www.youtube.com/watch?v=O10ziC8UsIQ" target="_blank" rel="noopener noreferrer" class="link-badge youtube">YouTube</a>
+                            <a href="https://www.hackster.io/panda3tt/minecraft-teleport-dialer-388308" target="_blank" rel="noopener noreferrer" class="link-badge hackster">Hackster.io</a>
+                            <a href="https://m5stack.com/global-innovation-contest-2025/results" target="_blank" rel="noopener noreferrer" class="link-badge award"><span class="trophy">🏆</span><span class="award-body"><span class="award-title">Game Innovation Award</span><span class="award-meta">M5Stack Global Innovation Contest 2025</span></span></a>
+                        </div>
+                    </div>
+                </article>
+                <article class="project-card">
+                    <div class="project-thumb">
+                        <img src="img/p07.png" alt="AtomS3R-CAM監視カメラ">
+                    </div>
+                    <div class="project-body">
+                        <h3><a href="https://protopedia.net/prototype/6669" target="_blank" rel="noopener noreferrer">AtomS3R-CAM監視カメラ</a></h3>
+                        <p class="project-desc">カメラだよ</p>
+                        <div class="project-links">
+                            <a href="https://protopedia.net/prototype/6669" target="_blank" rel="noopener noreferrer" class="link-badge proto">ProtoPedia</a>
+                            <a href="https://www.youtube.com/watch?v=FpvwnJbWSMc" target="_blank" rel="noopener noreferrer" class="link-badge youtube">YouTube</a>
+                            <a href="https://www.hackster.io/panda3tt/atoms3r-cam-surveillance-camera-d85308" target="_blank" rel="noopener noreferrer" class="link-badge hackster">Hackster.io</a>
+                            <a href="https://m5stack.com/global-innovation-contest-2025/results" target="_blank" rel="noopener noreferrer" class="link-badge award"><span class="trophy">🏆</span><span class="award-body"><span class="award-title">Best Robotics</span><span class="award-meta">M5Stack Global Innovation Contest 2025</span></span></a>
+                        </div>
+                    </div>
+                </article>
+                <article class="project-card">
+                    <div class="project-thumb">
+                        <img src="img/p06.png" alt="VNN-GUN ヴァナナガン">
+                    </div>
+                    <div class="project-body">
+                        <h3><a href="https://protopedia.net/prototype/6634" target="_blank" rel="noopener noreferrer">VNN-GUN ヴァナナガン</a></h3>
+                        <p class="project-desc">無敵</p>
+                        <div class="project-links">
+                            <a href="https://protopedia.net/prototype/6634" target="_blank" rel="noopener noreferrer" class="link-badge proto">ProtoPedia</a>
+                            <a href="https://www.youtube.com/watch?v=twRyIZYFSog" target="_blank" rel="noopener noreferrer" class="link-badge youtube">YouTube</a>
+                            <a href="https://takaha-jp.sakura.ne.jp/co/solcon/slcn-pblctn12/" target="_blank" rel="noopener noreferrer" class="link-badge award"><span class="trophy">🏆</span><span class="award-body"><span class="award-title">ソレコン大賞</span><span class="award-meta">第12回ソレコン 〜タカハソレノイドコンテスト〜</span></span></a>
+                        </div>
+                    </div>
+                </article>
+                <article class="project-card">
+                    <div class="project-thumb">
+                        <img src="img/p05.png" alt="パンダにぺろぺろさせたい">
+                    </div>
+                    <div class="project-body">
+                        <h3><a href="https://protopedia.net/prototype/6343" target="_blank" rel="noopener noreferrer">パンダにぺろぺろさせたい</a></h3>
+                        <p class="project-desc">ぱんだぺろぺろ</p>
+                        <div class="project-links">
+                            <a href="https://protopedia.net/prototype/6343" target="_blank" rel="noopener noreferrer" class="link-badge proto">ProtoPedia</a>
+                            <a href="https://www.youtube.com/watch?v=o0n9PqdOgEI" target="_blank" rel="noopener noreferrer" class="link-badge youtube">YouTube</a>
+                            <a href="https://protopedia.net/event/106" target="_blank" rel="noopener noreferrer" class="link-badge award"><span class="trophy">🏆</span><span class="award-body"><span class="award-title">ヘボコン賞</span><span class="award-meta">ヒーローズ・リーグ 2024</span></span></a>
+                        </div>
+                    </div>
+                </article>
+                <article class="project-card">
+                    <div class="project-thumb">
+                        <img src="img/p04.png" alt="物理確定ガチャ">
+                    </div>
+                    <div class="project-body">
+                        <h3><a href="https://protopedia.net/prototype/5792" target="_blank" rel="noopener noreferrer">物理確定ガチャ</a></h3>
+                        <p class="project-desc">ガチャガチャすき</p>
+                        <div class="project-links">
+                            <a href="https://protopedia.net/prototype/5792" target="_blank" rel="noopener noreferrer" class="link-badge proto">ProtoPedia</a>
+                            <a href="https://www.youtube.com/watch?v=aVx6mQFGKBo" target="_blank" rel="noopener noreferrer" class="link-badge youtube">YouTube</a>
+                            <a href="https://www.thingiverse.com/thing:6718930" target="_blank" rel="noopener noreferrer" class="link-badge thingiverse">Thingiverse</a>
+                        </div>
+                    </div>
+                </article>
+                <article class="project-card">
+                    <div class="project-thumb">
+                        <img src="img/p03.png" alt="Timer Cameraでバレットタイム">
+                    </div>
+                    <div class="project-body">
+                        <h3><a href="https://protopedia.net/prototype/5524" target="_blank" rel="noopener noreferrer">Timer Cameraでバレットタイム</a></h3>
+                        <p class="project-desc">マトリックスしたい</p>
+                        <div class="project-links">
+                            <a href="https://protopedia.net/prototype/5524" target="_blank" rel="noopener noreferrer" class="link-badge proto">ProtoPedia</a>
+                            <a href="https://www.youtube.com/watch?v=G-XkDvwEQaI" target="_blank" rel="noopener noreferrer" class="link-badge youtube">YouTube</a>
+                        </div>
+                    </div>
+                </article>
+                <article class="project-card">
+                    <div class="project-thumb">
+                        <img src="img/p02.png" alt="Hack上等★ボタンバンバン">
+                    </div>
+                    <div class="project-body">
+                        <h3><a href="https://protopedia.net/prototype/5445" target="_blank" rel="noopener noreferrer">Hack上等★ボタンバンバン</a></h3>
+                        <p class="project-desc">連打ゲー</p>
+                        <div class="project-links">
+                            <a href="https://protopedia.net/prototype/5445" target="_blank" rel="noopener noreferrer" class="link-badge proto">ProtoPedia</a>
+                            <a href="https://www.youtube.com/watch?v=9Bhb3IkvqdA" target="_blank" rel="noopener noreferrer" class="link-badge youtube">YouTube</a>
+                            <a href="https://protopedia.net/event/touchgfx" target="_blank" rel="noopener noreferrer" class="link-badge award"><span class="trophy">🏆</span><span class="award-body"><span class="award-title">優秀賞</span><span class="award-meta">STM32マイコンとTouchGFX GUIチャレンジ</span></span></a>
+                        </div>
+                    </div>
+                </article>
+                <article class="project-card">
+                    <div class="project-thumb">
+                        <img src="img/p01.png" alt="風船ぶばばばばぁぁぁん">
+                    </div>
+                    <div class="project-body">
+                        <h3><a href="https://protopedia.net/prototype/4996" target="_blank" rel="noopener noreferrer">風船ぶばばばばぁぁぁん</a></h3>
+                        <p class="project-desc">爆破したい！</p>
+                        <div class="project-links">
+                            <a href="https://protopedia.net/prototype/4996" target="_blank" rel="noopener noreferrer" class="link-badge proto">ProtoPedia</a>
+                            <a href="https://www.youtube.com/watch?v=gsvvFOj3xys" target="_blank" rel="noopener noreferrer" class="link-badge youtube">YouTube</a>
+                            <a href="https://protopedia.net/event/106" target="_blank" rel="noopener noreferrer" class="link-badge award"><span class="trophy">🏆</span><span class="award-body"><span class="award-title">ただただすごい賞</span><span class="award-meta">ヒーローズ・リーグ 2024</span></span></a>
+                        </div>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- 活動履歴セクション -->
+    <section id="awards">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">活動履歴</h2>
+                <p class="section-subtitle">イベントとコンテストの受賞履歴とか</p>
+            </div>
+            <div class="timeline-grid">
+                <article class="timeline-card upcoming">
+                    <div class="timeline-meta">
+                        <span class="pill pill-year">2025</span>
+                        <span class="pill pill-type">Event</span>
+                        <span class="pill pill-upcoming">出展予定</span>
+                    </div>
+                    <div class="event-date">2025年12月7日(日)</div>
+                    <h3>📍 出展 / 伊勢ギーク・フェア 2025</h3>
+                    <p>初めて参加します！楽しみ！</p>
+                </article>
+                <article class="timeline-card">
+                    <div class="timeline-meta">
+                        <span class="pill pill-year">2025</span>
+                        <span class="pill pill-type">Event</span>
+                    </div>
+                    <div class="event-date">2025年10月18日(土)～19日(日)</div>
+                    <h3><a href="https://x.com/panda3tt/status/1980230351248412750" target="_blank" rel="noopener noreferrer">📍 出展 / NT名古屋</a></h3>
+                    <p>ギュウギュウ詰めの懇親会楽しかった</p>
+                </article>
+                <article class="timeline-card">
+                    <div class="timeline-meta">
+                        <span class="pill pill-year">2025</span>
+                        <span class="pill pill-type">Event</span>
+                    </div>
+                    <div class="event-date">2025年9月6日(土)・7日(日)</div>
+                    <h3><a href="https://x.com/panda3tt/status/1964132506049069432" target="_blank" rel="noopener noreferrer">📍 出展 / NT東京</a></h3>
+                    <p>ptとしての初出展！</p>
+                </article>
+                <article class="timeline-card accent">
+                    <div class="timeline-meta">
+                        <span class="pill pill-year">2025</span>
+                        <span class="pill pill-type">Award</span>
+                    </div>
+                    <h3><a href="https://m5stack.com/global-innovation-contest-2025/results" target="_blank" rel="noopener noreferrer">🏆 Special Mentions - Best Robotics</a></h3>
+                    <p>M5Stack Global Innovation Contest 2025</p>
+                </article>
+                <article class="timeline-card accent">
+                    <div class="timeline-meta">
+                        <span class="pill pill-year">2025</span>
+                        <span class="pill pill-type">Award</span>
+                    </div>
+                    <h3><a href="https://m5stack.com/global-innovation-contest-2025/results" target="_blank" rel="noopener noreferrer">🏆 Special Mentions - Game Innovation Award</a></h3>
+                    <p>M5Stack Global Innovation Contest 2025</p>
+                </article>
+                <article class="timeline-card accent">
+                    <div class="timeline-meta">
+                        <span class="pill pill-year">2025</span>
+                        <span class="pill pill-type">Award</span>
+                    </div>
+                    <h3><a href="https://takaha-jp.sakura.ne.jp/co/solcon/slcn-pblctn12/" target="_blank" rel="noopener noreferrer">🏆 ソレコン大賞</a></h3>
+                    <p>第12回ソレコン 〜タカハソレノイドコンテスト〜</p>
+                </article>
+                <article class="timeline-card accent">
+                    <div class="timeline-meta">
+                        <span class="pill pill-year">2024</span>
+                        <span class="pill pill-type">Award</span>
+                    </div>
+                    <h3><a href="https://protopedia.net/event/106" target="_blank" rel="noopener noreferrer">🏆 ただただすごい賞 by 若狭企画</a></h3>
+                    <p>ヒーローズ・リーグ 2024</p>
+                </article>
+                <article class="timeline-card accent">
+                    <div class="timeline-meta">
+                        <span class="pill pill-year">2024</span>
+                        <span class="pill pill-type">Award</span>
+                    </div>
+                    <h3><a href="https://protopedia.net/event/106" target="_blank" rel="noopener noreferrer">🏆 ヘボコン賞 by 技術力の低い人限定ロボコン（通称：ヘボコン）</a></h3>
+                    <p>ヒーローズ・リーグ 2024</p>
+                </article>
+                <article class="timeline-card accent">
+                    <div class="timeline-meta">
+                        <span class="pill pill-year">2024</span>
+                        <span class="pill pill-type">Award</span>
+                    </div>
+                    <h3><a href="https://protopedia.net/event/touchgfx" target="_blank" rel="noopener noreferrer">🏆 優秀賞</a></h3>
+                    <p>STM32マイコンとTouchGFX GUIチャレンジ</p>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Contact</h2>
+                <p class="section-subtitle">連絡はXでおねがいします！</p>
+            </div>
+            <div class="contact-content">
+                <div class="social-links">
+                    <a href="https://x.com/panda3tt" class="social-icon x" target="_blank" rel="noopener noreferrer" title="X (Twitter)">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+                        </svg>
+                    </a>
+                    <a href="https://protopedia.net/prototyper/panda3tt" class="social-icon protopedia" target="_blank" rel="noopener noreferrer" title="ProtoPedia">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" role="img" aria-label="ProtoPedia" preserveAspectRatio="xMidYMid meet">
+                            <rect width="24" height="24" fill="none" />
+                            <text x="12" y="18" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', 'Hiragino Kaku Gothic ProN', 'Noto Sans JP', sans-serif" font-size="20" font-weight="700" fill="currentColor">P</text>
+                        </svg>
+                    </a>
+                    <a href="https://www.youtube.com/@panda3tt" class="social-icon youtube" target="_blank" rel="noopener noreferrer" title="YouTube">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
+                        </svg>
+                    </a>
+                    <a href="https://github.com/pt711" class="social-icon github" target="_blank" rel="noopener noreferrer" title="GitHub">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                        </svg>
+                    </a>
+                    <a href="https://www.hackster.io/panda3tt" class="social-icon hackster" target="_blank" rel="noopener noreferrer" title="Hackster.io">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" role="img" aria-label="Hackster" preserveAspectRatio="xMidYMid meet">
+                            <rect width="24" height="24" fill="none" />
+                            <text x="12" y="18" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', 'Hiragino Kaku Gothic ProN', 'Noto Sans JP', sans-serif" font-size="20" font-weight="700" fill="currentColor">H</text>
+                        </svg>
+                    </a>
+                    <a href="https://www.thingiverse.com/pt3/designs" class="social-icon thingiverse" target="_blank" rel="noopener noreferrer" title="Thingiverse">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" role="img" aria-label="Thingiverse" preserveAspectRatio="xMidYMid meet">
+                            <rect width="24" height="24" fill="none" />
+                            <text x="12" y="18" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', 'Hiragino Kaku Gothic ProN', 'Noto Sans JP', sans-serif" font-size="20" font-weight="700" fill="currentColor">T</text>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2025 pt. All rights reserved.</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

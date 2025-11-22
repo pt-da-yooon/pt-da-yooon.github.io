@@ -1,0 +1,993 @@
+/* リセット & 基本設定 */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --primary-color: #000;
+    --secondary-color: #fff;
+    --accent-color: #333;
+    --text-color: #222;
+    --bg-color: #fafafa;
+    /* Palette tokens for unified colors */
+    --brand-teal: #02ADBC;
+    --brand-blue: #1BACF7;
+    --brand-deep-blue: #248BFB;
+    --brand-red-1: #D32F2F; /* YouTube gradient start */
+    --brand-red-2: #B71C1C; /* YouTube gradient end */
+    --accent-orange: #FF8A00;
+    --card-overlay: rgba(255,255,255,0.04);
+    --muted-text: #c5ceda;
+    /* Year pill tokens - unified */
+    --pill-year-bg: #f5f5f5;
+    --pill-year-color: #0f172a;
+    --pill-year-border: #e6e6e6;
+    --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', 'Hiragino Sans', 'Hiragino Kaku Gothic ProN', 'Noto Sans JP', sans-serif;
+    line-height: 1.6;
+    color: var(--text-color);
+    background-color: var(--bg-color);
+    overflow-x: hidden;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+/* ヘッダー & ナビゲーション */
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+nav {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 1.5rem 3rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 0.25rem; /* 隙間を狭く */
+    font-size: 1.1rem;
+    font-weight: 700;
+    letter-spacing: 0.4px;
+}
+
+.logo-icon {
+    width: 32px;
+    height: 32px;
+    object-fit: contain;
+}
+
+.logo-handle {
+    font-size: 0.75rem;
+    font-weight: 400;
+    color: rgba(0, 0, 0, 0.5);
+    letter-spacing: 0.05em;
+    align-self: center; /* テキストをベースラインではなく中央寄せにして縦のズレを減らす */
+    margin-bottom: 0; /* 小さな余白を削除 */
+}
+
+.nav-links {
+    display: flex;
+    list-style: none;
+    gap: 3rem;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: var(--text-color);
+    font-weight: 500;
+    font-size: 0.9rem;
+    letter-spacing: 1px;
+    transition: var(--transition);
+    position: relative;
+}
+
+.nav-links a::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: var(--primary-color);
+    transition: var(--transition);
+}
+
+.nav-links a:hover::after {
+    width: 100%;
+}
+
+/* ヒーローセクション */
+#hero {
+    width: 100%;
+    aspect-ratio: 2.414 / 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* Background fallback (image element placed in markup for reliable stacking) */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-color: #000; /* fallback */
+    position: relative;
+    overflow: hidden;
+}
+
+#hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: 
+        linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px),
+        linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px);
+    background-size: 50px 50px;
+    opacity: 0.5;
+    z-index: 0; /* keep pseudo overlay behind the hero image */
+}
+
+.hero-content {
+    text-align: center;
+    position: relative;
+    z-index: 3;
+    display: none; /* Hide hero content as requested */
+}
+
+/* Hero image element placed above the pseudo overlay but behind content */
+.hero-image {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    z-index: 2;
+}
+
+.hero-title-wrapper {
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    gap: 2rem;
+    margin-bottom: 0.5rem;
+}
+
+.hero-icon {
+    width: clamp(80px, 15vw, 150px);
+    height: clamp(80px, 15vw, 150px);
+    object-fit: contain;
+    margin-bottom: 1rem;
+}
+
+.hero-title {
+    font-size: clamp(4rem, 12vw, 8rem);
+    font-weight: 700;
+    letter-spacing: -2px;
+    margin-bottom: 0;
+    color: #fff;
+    display: flex;
+    align-items: baseline;
+    gap: 1rem;
+}
+
+.hero-handle {
+    font-size: 1.5rem;
+    font-weight: 400;
+    color: rgba(255, 255, 255, 0.6);
+    letter-spacing: 0.05em;
+}
+
+.hero-subtitle {
+    font-size: clamp(1rem, 2vw, 1.5rem);
+    color: #666;
+    margin-bottom: 3rem;
+    animation: fadeInUp 1s ease-out 0.2s backwards;
+}
+
+.cta-button {
+    display: inline-block;
+    padding: 1rem 3rem;
+    background: transparent;
+    color: #fff;
+    text-decoration: none;
+    font-weight: 600;
+    letter-spacing: 1px;
+    transition: var(--transition);
+    border: 2px solid #fff;
+    margin-top: 3rem;
+}
+
+.cta-button:hover {
+    background: #fff;
+    color: #000;
+}
+
+/* コンテナ */
+.container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 3rem;
+}
+
+/* セクション共通 */
+section {
+    padding: 6rem 0;
+}
+
+.section-title {
+    font-size: clamp(2.5rem, 5vw, 4rem);
+    font-weight: 700;
+    margin-bottom: 4rem;
+    letter-spacing: -1px;
+    text-align: center;
+}
+
+/* アバウトセクション */
+#about {
+    background: var(--secondary-color);
+}
+
+.about-content {
+    max-width: 800px;
+    margin: 0 auto 4rem;
+    text-align: center;
+}
+
+.about-content p {
+    font-size: 1.5rem;
+    line-height: 2;
+    margin-bottom: 1rem;
+    color: #555;
+}
+
+/* About: 自己紹介動画のレスポンシブコンテナ */
+.about-video {
+    max-width: 900px;
+    margin: 1.5rem auto 2.5rem;
+    position: relative;
+    width: 100%;
+}
+
+/* 初期状態は非表示にしておき、再生に成功したら JS で表示する
+   （再生できないブラウザで黒い領域が表示されるのを防ぐ） */
+.about-video {
+    display: none;
+    overflow: hidden; /* 動画の外側領域をクリッピングする */
+    border-radius: 18px; /* 角丸を少し大きくする */
+}
+
+.about-video .about-intro-video {
+    width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 18px;
+    object-fit: cover;
+    background: #000;
+}
+
+/* 動画をクリック可能に見せる（再生/一時停止トグル） */
+/* クリック時の挙動は JS で扱うが、カーソルは変更しない */
+
+/* 上下左右1pxずつトリミングして表示する（コンテナは overflow:hidden） */
+.about-video .about-intro-video {
+    position: relative;
+    left: -2px;
+    top: -2px;
+    width: calc(100% + 4px);
+    height: auto;
+}
+
+/* 自動再生がブロックされたときに表示する大きな再生ボタンオーバーレイ */
+.about-video .play-overlay {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 5;
+    background: rgba(0,0,0,0.6);
+    color: #fff;
+    border: none;
+    width: 76px;
+    height: 76px;
+    border-radius: 50%;
+    font-size: 2rem;
+    display: none; /* 再生に成功したら非表示 */
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    box-shadow: 0 8px 30px rgba(0,0,0,0.45);
+}
+
+.about-video .about-video-fallback {
+    margin-top: 0.75rem;
+    text-align: center;
+    font-size: 0.95rem;
+    color: #666;
+}
+
+/* モバイル向け: ボタンを少し小さく */
+@media (max-width: 480px) {
+    .about-video .play-overlay {
+        width: 60px;
+        height: 60px;
+        font-size: 1.4rem;
+    }
+}
+
+.skills {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 3rem;
+    margin-top: 4rem;
+}
+
+.skill-item {
+    text-align: center;
+    padding: 2rem;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    transition: var(--transition);
+}
+
+.skill-item:hover {
+    opacity: 0.8;
+}
+
+.skill-item h3 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    letter-spacing: 1px;
+}
+
+.skill-item p {
+    color: #666;
+    font-size: 0.95rem;
+}
+
+/* 作品セクション */
+#works {
+    background: radial-gradient(circle at 10% 20%, rgba(255, 255, 255, 0.08), transparent 40%),
+                radial-gradient(circle at 90% 10%, rgba(255, 255, 255, 0.06), transparent 40%),
+                linear-gradient(180deg, #0d1117 0%, #0b0e12 60%, #0f141c 100%);
+    color: #e7ecf2;
+}
+
+#works .section-title {
+    color: #f5f7fb;
+    margin-bottom: 1rem;
+}
+
+#works .section-header {
+    text-align: center;
+}
+
+#works .section-subtitle {
+    color: #c4c9d4;
+    font-size: 1rem;
+    line-height: 1.8;
+    margin-bottom: 1.75rem;
+}
+
+
+
+.project-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 1.8rem;
+}
+
+.project-card {
+    background: linear-gradient(145deg, rgba(255, 255, 255, 0.04), rgba(255, 255, 255, 0.02));
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 18px;
+    overflow: hidden;
+    position: relative;
+    box-shadow: 0 18px 50px rgba(0, 0, 0, 0.45);
+    transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+    display: flex;
+    flex-direction: column;
+}
+
+.project-card::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(120deg, rgba(255, 255, 255, 0.08), transparent 40%);
+    opacity: 0;
+    transition: opacity 0.25s ease;
+}
+
+.project-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 28px 70px rgba(0, 0, 0, 0.6);
+    border-color: rgba(255, 255, 255, 0.12);
+}
+
+.project-card:hover::before {
+    opacity: 1;
+}
+
+.project-thumb {
+    position: relative;
+    aspect-ratio: 4 / 3;
+    overflow: hidden;
+    background: radial-gradient(circle at 20% 20%, rgba(255, 255, 255, 0.08), transparent 55%),
+                #0b0e12;
+}
+
+.project-thumb img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease, filter 0.5s ease;
+    filter: saturate(1.05);
+}
+
+.project-card:hover .project-thumb img {
+    transform: scale(1.05);
+    filter: saturate(1.1);
+}
+
+
+
+
+
+
+
+.project-body {
+    padding: 1.75rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    position: relative;
+    z-index: 1;
+}
+
+
+
+.project-card h3 {
+    font-size: 1.35rem;
+    letter-spacing: 0.5px;
+}
+
+.project-card h3 a {
+    color: #f5f7fb;
+    text-decoration: none;
+    transition: opacity 0.25s ease;
+}
+
+.project-card h3 a:hover {
+    opacity: 0.8;
+}
+
+.project-desc {
+    color: #c5ceda;
+    line-height: 1.7;
+    font-size: 0.98rem;
+}
+
+.project-links {
+    display: flex;
+    gap: 0.6rem;
+    flex-wrap: wrap;
+    margin-top: 0.25rem;
+}
+
+.link-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    padding: 0.4rem 0.85rem;
+    border-radius: 10px;
+    font-size: 0.85rem;
+    font-weight: 700;
+    text-decoration: none;
+    transition: transform 0.2s ease, opacity 0.2s ease, box-shadow 0.2s ease;
+    color: #0d1117;
+    background: var(--badge-bg, #f5f7fb);
+}
+
+.link-badge:hover {
+    transform: translateY(-2px);
+    opacity: 0.92;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.12);
+}
+
+.link-badge.proto {
+    background: var(--brand-teal);
+    color: #f7fafa;
+}
+
+.link-badge.hackster {
+    background: var(--brand-blue);
+    color: #f7fbff;
+}
+
+.link-badge.award {
+    /* Yellow -> Orange gradient for award badges (stronger, high-contrast) */
+    background: linear-gradient(135deg, #FFED66 0%, #FFB84D 50%, #FF8A00 100%);
+    color: #1a1a10;
+    box-shadow: inset 0 -2px 0 rgba(0,0,0,0.06), 0 10px 24px rgba(255,138,0,0.14);
+}
+    /* Award badge: yellow->orange gradient and layout */
+    .link-badge.award {
+         background: linear-gradient(135deg, #FFED66 0%, #FFB84D 50%, #FF8A00 100%);
+         color: #1a1a10;
+         /* 左にトロフィー、右にタイトル/メタの縦組み
+            --- 他のバッジとは別行にしたいので幅を占めるブロック表示にする */
+         display: flex;
+         width: 100%;
+         box-sizing: border-box;
+         flex-direction: row;
+         align-items: center;
+         gap: 0.6rem;
+         padding: 0.36rem 0.6rem;
+         margin-top: 0.32rem;
+         /* Narrower outer shadow using orange tones */
+         box-shadow: inset 0 -2px 0 rgba(0,0,0,0.08), 0 12px 30px rgba(255,138,0,0.18);
+     }
+
+    /* Trophy (left) styling */
+    .link-badge.award .trophy {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 1.4em;
+        height: 1.4em;
+        font-size: 1.05em;
+        line-height: 1;
+    }
+
+    /* Right column: title above, meta below */
+    .link-badge.award .award-body {
+        display: inline-flex;
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .link-badge.award .award-title {
+        display: block;
+        font-size: 0.95rem;
+        line-height: 1.1;
+    }
+
+    /* YouTube badge: shape matches other .link-badge (like ProtoPedia) */
+    .link-badge.youtube {
+            /* Use brand red tokens for consistent red */
+            background: linear-gradient(180deg, var(--brand-red-1) 0%, var(--brand-red-2) 100%);
+            color: #fff;
+            padding: 0.4rem 0.85rem;
+            border-radius: 10px;
+            font-size: 0.85rem;
+            font-weight: 700;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.35rem;
+        }
+    .link-badge.youtube:hover {
+        transform: translateY(-2px);
+        opacity: 0.88;
+        box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+    }
+
+    /* Smaller secondary line inside award badges */
+    .link-badge.award .award-meta {
+        display: block;
+        font-size: 0.78rem;
+        line-height: 1.2;
+        margin-top: 0.08rem;
+        opacity: 0.95;
+    }
+
+/* Trophy のみを対象に四方方向の濃いテキストシャドウを適用（続く文字列には影を付けない） */
+.link-badge.award .trophy {
+    display: inline-block;
+    /* 強めの放射状シャドウ（四方向に見えるように0 0 blur を使う） */
+    text-shadow:
+    0 0 1px rgba(0,0,0,0.35),
+    0.4px 0.4px 2px rgba(0,0,0,0.25),
+    -0.4px -0.4px 2px rgba(0,0,0,0.25),
+    0.4px -0.4px 2px rgba(0,0,0,0.25),
+    -0.4px 0.4px 2px rgba(0,0,0,0.25);
+}
+
+.link-badge.thingiverse {
+    background: var(--brand-deep-blue);
+    color: #f7fbff;
+}
+
+/* 活動履歴セクション */
+#awards {
+    background: radial-gradient(circle at 20% 20%, rgba(0, 0, 0, 0.06), transparent 40%),
+                radial-gradient(circle at 80% 0%, rgba(0, 0, 0, 0.08), transparent 45%),
+                #f5f5f5;
+    position: relative;
+}
+
+#awards::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, rgba(0, 0, 0, 0.05), transparent 35%, rgba(0, 0, 0, 0.05));
+    pointer-events: none;
+}
+
+#awards .container {
+    position: relative;
+    z-index: 1;
+}
+
+/* Scoped 活動履歴 styles to ensure they apply */
+#awards .section-header {
+    text-align: center;
+    max-width: 760px;
+    margin: 0 auto 3rem;
+}
+
+#awards .section-title {
+    margin-bottom: 1rem;
+}
+
+#awards .section-subtitle {
+    color: #666;
+    font-size: 1rem;
+    line-height: 1.8;
+}
+
+#awards .timeline-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+}
+
+#awards .timeline-card {
+    background: rgba(255, 255, 255, 0.9);
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    border-radius: 18px;
+    padding: 1.5rem;
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.04);
+    transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+#awards .timeline-card::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, rgba(0, 0, 0, 0.04), transparent 60%);
+    opacity: 0;
+    transition: opacity 0.25s ease;
+}
+
+#awards .timeline-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.08);
+    border-color: rgba(0, 0, 0, 0.12);
+}
+
+#awards .timeline-card:hover::after {
+    opacity: 1;
+}
+
+#awards .timeline-card h3 {
+    font-size: 1.2rem;
+    margin-bottom: 0.75rem;
+    letter-spacing: 0.3px;
+    position: relative;
+    z-index: 1;
+}
+
+#awards .timeline-card h3 a {
+    color: inherit;
+    text-decoration: none;
+    transition: var(--transition);
+}
+
+#awards .timeline-card h3 a:hover {
+    opacity: 0.75;
+}
+
+#awards .timeline-card p {
+    color: #555;
+    font-size: 0.95rem;
+    line-height: 1.7;
+    position: relative;
+    z-index: 1;
+}
+
+/* 活動履歴の accent カード内で、連続する段落の間に余白を入れる
+   （例: 'うれしい！' の上の隙間を確保） */
+#awards .timeline-card.accent p + p {
+    margin-top: 0.75rem;
+}
+
+#awards .timeline-meta {
+    display: flex;
+    gap: 0.5rem;
+    align-items: center;
+    margin-bottom: 0.75rem;
+    position: relative;
+    z-index: 1;
+}
+
+#awards .pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    padding: 0.35rem 0.75rem;
+    border-radius: 999px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.4px;
+    background: rgba(0, 0, 0, 0.06);
+    color: #222;
+}
+
+#awards .pill-year {
+    background: var(--pill-year-bg);
+    color: var(--pill-year-color);
+    border: 1px solid var(--pill-year-border);
+    border-radius: 6px;
+    padding: 0.32rem 0.72rem;
+}
+
+#awards .pill-type {
+    background: var(--brand-teal); /* ティール系 */
+    color: #ffffff; /* 白文字 */
+    border: none;
+}
+
+/* Date pill for events */
+#awards .pill-date {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.28rem 0.65rem;
+    border-radius: 999px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    background: rgba(0,0,0,0.04);
+    color: #0f172a;
+    margin-left: 0.5rem;
+}
+
+/* Plain date text rendered under badges/headings to avoid layout shifts */
+#awards .event-date {
+    display: block;
+    margin: 0.18rem 0 0.32rem 0; /* tighter top/bottom spacing */
+    font-size: 0.95rem;
+    color: var(--muted-text);
+    font-weight: 600;
+}
+
+/* Upcoming pill + highlight for soon-to-be events */
+#awards .pill-upcoming {
+    background: linear-gradient(180deg,#FF8A00 0%, #FF6F00 100%);
+    color: #fff;
+}
+
+#awards .timeline-card.upcoming {
+    /* Match regular timeline-card background for visual consistency */
+    background: rgba(255, 255, 255, 0.9);
+    /* Use a thicker orange border as the primary accent */
+    border: 3px solid var(--accent-orange);
+    /* Keep the same subtle shadow as other timeline cards */
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.04);
+    position: relative;
+    /* Reset padding to match other cards (no reserved left gutter) */
+    padding-left: 1.5rem;
+    border-radius: 18px;
+}
+
+#awards .timeline-card.accent {
+    background: linear-gradient(135deg, rgba(15, 23, 42, 0.92), rgba(34, 34, 34, 0.9));
+    color: #f7f7f7;
+    border-color: rgba(255, 255, 255, 0.08);
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.22);
+}
+
+/* Swap: for award cards, make the year pill use the muted/accent background
+   and make the type (Award) pill use the yellow year color so they are visually swapped */
+/* For award (accent) cards, keep the year pill visually consistent
+   with events: white background, black text and border */
+/* Accent cards (awards) should use the same year pill styling as events */
+#awards .timeline-card.accent .pill-year {
+    background: var(--pill-year-bg);
+    color: var(--pill-year-color);
+    border: 1px solid var(--pill-year-border);
+    border-radius: 6px;
+    padding: 0.32rem 0.72rem;
+}
+
+#awards .timeline-card.accent .pill-type {
+    background: #f4d03f;
+    color: #1f2937;
+    border-color: rgba(0, 0, 0, 0.06);
+}
+
+#awards .timeline-card.accent p {
+    color: #e5e7eb;
+}
+
+/* コンタクトセクション */
+#contact {
+    background: var(--primary-color);
+    color: var(--secondary-color);
+}
+
+#contact .section-title {
+    color: var(--secondary-color);
+}
+
+#contact .section-title {
+    margin-bottom: 1rem;
+}
+
+/* Contact 内のサブタイトルを白にする（活動履歴と同じ構造に合わせる） */
+#contact .section-subtitle {
+    color: var(--secondary-color);
+    margin-bottom: 1.75rem;
+}
+
+/* Contact のヘッダーを中央揃えにして副題をセンタリング */
+#contact .section-header {
+    text-align: center;
+}
+
+.contact-content {
+    text-align: center;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.social-links {
+    display: flex;
+    gap: 2rem;
+    justify-content: center;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+.contact-note {
+    color: var(--secondary-color);
+    font-size: 1rem;
+    margin-top: 1rem;
+}
+
+.social-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background: var(--secondary-color);
+    color: var(--primary-color);
+    transition: var(--transition);
+    text-decoration: none;
+}
+
+.social-icon:hover {
+    transform: translateY(-5px);
+    opacity: 0.8;
+}
+
+.social-icon svg {
+    width: 24px;
+    height: 24px;
+}
+
+/* ブランド別 白抜きスタイル */
+.social-icon.hackster {
+    background: #1BACF7; /* Hackster blue */
+    color: #fff;
+}
+
+.social-icon.protopedia {
+    background: #02ADBC; /* ProtoPedia color */
+    color: #fff;
+}
+
+.social-icon.thingiverse {
+    background: #248BFB; /* Thingiverse blue */
+    color: #fff;
+}
+
+/* 追加ブランドカラー */
+.social-icon.x {
+    background: #fff; /* 白背景 */
+    color: #000; /* アイコンは黒 */
+}
+
+.social-icon.x svg {
+    fill: #000;
+}
+
+.social-icon.github {
+    background: #24292e; /* GitHub */
+    color: #fff;
+}
+
+.social-icon.youtube {
+    /* Use brand red for social icon */
+    background: var(--brand-red-1);
+    color: #fff;
+}
+
+/* フッター */
+footer {
+    background: var(--primary-color);
+    color: var(--secondary-color);
+    text-align: center;
+    padding: 2rem;
+    font-size: 0.9rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* アニメーション */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* レスポンシブ */
+@media (max-width: 768px) {
+    nav {
+        padding: 1rem 1.5rem;
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    .nav-links {
+        gap: 1.5rem;
+    }
+
+    .container {
+        padding: 0 1.5rem;
+    }
+
+    section {
+        padding: 5rem 0;
+    }
+
+    .works-grid {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+
+    .skills {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+
+    .contact-links {
+        flex-direction: column;
+        gap: 1rem;
+    }
+}
