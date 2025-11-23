@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="作りたもの作ってます">
     <title>ptです</title>
     <link rel="icon" href="img/favicon-32.png" sizes="32x32" type="image/png">
     <link rel="shortcut icon" href="img/favicon-32.png">
@@ -14,6 +15,7 @@
     <meta property="og:url" content="https://pt-da-yooon.com/" />
     <meta property="og:type" content="website" />
     <meta property="og:image" content="https://pt-da-yooon.com/img/top.png" />
+    <link rel="preload" as="image" href="img/pt_desu.png">
     <link rel="stylesheet" href="styles.css">
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-10R9WFKEZE"></script>
@@ -44,7 +46,10 @@
 
     <!-- Hero -->
     <section id="hero">
-        <img src="img/top.png" alt="hero" class="hero-image" />
+        <picture class="hero-image">
+            <source srcset="img/top_m.png" media="(max-width: 768px)">
+            <img src="img/top.png" alt="hero" class="hero-image" />
+        </picture>
         <div class="hero-content">
             <div class="hero-title-wrapper">
                 <img src="img/icon.png" alt="pt icon" class="hero-icon">
@@ -58,9 +63,7 @@
         <div class="container">
             <h2 class="section-title">About</h2>
             <div class="about-content">
-                <p>ptって名前でやらせてもらってます</p>
-                <p>作るの好き</p>
-                <!-- 自己紹介動画: 自動再生（muted）を試み、ブロックされた場合はオーバーレイでユーザー操作を促します -->
+                <p>ptって名前でやらせてもらってます！</p>
                 <div class="about-video" aria-hidden="false">
                     <video id="aboutIntro" class="about-intro-video" playsinline muted autoplay loop poster="img/intro-poster.jpg" aria-label="紹介動画">
                         <source src="media/web.mp4" type="video/mp4">
@@ -77,9 +80,22 @@
         <div class="container">
             <div class="section-header">
                 <h2 class="section-title">作ったもの</h2>
-                <p class="section-subtitle">作りたいもの作ってます</p>
+                <p class="section-subtitle">作りたいもの作ってます！</p>
             </div>
             <div class="project-grid">
+                <article class="project-card">
+                    <div class="project-thumb">
+                        <img src="img/p10.png" alt="うまい棒射出装置">
+                    </div>
+                    <div class="project-body">
+                        <h3><a href="https://protopedia.net/prototype/8204" target="_blank" rel="noopener noreferrer">うまい棒射出装置</a></h3>
+                        <p class="project-desc">どんどん射出しちゃうよ</p>
+                        <div class="project-links">
+                            <a href="https://protopedia.net/prototype/8204" target="_blank" rel="noopener noreferrer" class="link-badge proto">ProtoPedia</a>
+                            <a href="https://www.youtube.com/watch?v=uIOLpUnOZkc" target="_blank" rel="noopener noreferrer" class="link-badge youtube">YouTube</a>
+                        </div>
+                    </div>
+                </article>
                 <article class="project-card">
                     <div class="project-thumb">
                         <img src="img/p09.png" alt="パンダで賑やかしたい">
@@ -99,7 +115,7 @@
                     </div>
                     <div class="project-body">
                         <h3><a href="https://protopedia.net/prototype/7104" target="_blank" rel="noopener noreferrer">Minecraft Teleport Dialer</a></h3>
-                        <p class="project-desc">マイクラたのしい</p>
+                        <p class="project-desc">息子が2,3回しか使ってくれない</p>
                         <div class="project-links">
                             <a href="https://protopedia.net/prototype/7104" target="_blank" rel="noopener noreferrer" class="link-badge proto">ProtoPedia</a>
                             <a href="https://www.youtube.com/watch?v=O10ziC8UsIQ" target="_blank" rel="noopener noreferrer" class="link-badge youtube">YouTube</a>
@@ -114,12 +130,13 @@
                     </div>
                     <div class="project-body">
                         <h3><a href="https://protopedia.net/prototype/6669" target="_blank" rel="noopener noreferrer">AtomS3R-CAM監視カメラ</a></h3>
-                        <p class="project-desc">カメラだよ</p>
+                        <p class="project-desc">15台作った</p>
                         <div class="project-links">
                             <a href="https://protopedia.net/prototype/6669" target="_blank" rel="noopener noreferrer" class="link-badge proto">ProtoPedia</a>
                             <a href="https://www.youtube.com/watch?v=FpvwnJbWSMc" target="_blank" rel="noopener noreferrer" class="link-badge youtube">YouTube</a>
                             <a href="https://www.hackster.io/panda3tt/atoms3r-cam-surveillance-camera-d85308" target="_blank" rel="noopener noreferrer" class="link-badge hackster">Hackster.io</a>
                             <a href="https://m5stack.com/global-innovation-contest-2025/results" target="_blank" rel="noopener noreferrer" class="link-badge award"><span class="trophy">🏆</span><span class="award-body"><span class="award-title">Best Robotics</span><span class="award-meta">M5Stack Global Innovation Contest 2025</span></span></a>
+                            <a href="https://protopedia.net/event/hl2025" target="_blank" rel="noopener noreferrer" class="link-badge award"><span class="trophy">🏆</span><span class="award-body"><span class="award-title">野生のプロトタイピング賞</span><span class="award-meta">ヒーローズ・リーグ 2025</span></span></a>
                         </div>
                     </div>
                 </article>
@@ -129,7 +146,7 @@
                     </div>
                     <div class="project-body">
                         <h3><a href="https://protopedia.net/prototype/6634" target="_blank" rel="noopener noreferrer">VNN-GUN ヴァナナガン</a></h3>
-                        <p class="project-desc">無敵</p>
+                        <p class="project-desc">気分だけ無敵</p>
                         <div class="project-links">
                             <a href="https://protopedia.net/prototype/6634" target="_blank" rel="noopener noreferrer" class="link-badge proto">ProtoPedia</a>
                             <a href="https://www.youtube.com/watch?v=twRyIZYFSog" target="_blank" rel="noopener noreferrer" class="link-badge youtube">YouTube</a>
@@ -198,7 +215,7 @@
                     </div>
                     <div class="project-body">
                         <h3><a href="https://protopedia.net/prototype/4996" target="_blank" rel="noopener noreferrer">風船ぶばばばばぁぁぁん</a></h3>
-                        <p class="project-desc">爆破したい！</p>
+                        <p class="project-desc">本当は爆破したい</p>
                         <div class="project-links">
                             <a href="https://protopedia.net/prototype/4996" target="_blank" rel="noopener noreferrer" class="link-badge proto">ProtoPedia</a>
                             <a href="https://www.youtube.com/watch?v=gsvvFOj3xys" target="_blank" rel="noopener noreferrer" class="link-badge youtube">YouTube</a>
@@ -218,15 +235,14 @@
                 <p class="section-subtitle">イベントとコンテストの受賞履歴とか</p>
             </div>
             <div class="timeline-grid">
-                <article class="timeline-card upcoming">
+                <article class="timeline-card">
                     <div class="timeline-meta">
                         <span class="pill pill-year">2025</span>
                         <span class="pill pill-type">Event</span>
-                        <span class="pill pill-upcoming">出展予定</span>
                     </div>
                     <div class="event-date">2025年12月7日(日)</div>
-                    <h3>📍 出展 / 伊勢ギーク・フェア 2025</h3>
-                    <p>初めて参加します！楽しみ！</p>
+                    <h3><a href="https://x.com/search?q=%23%E4%BC%8A%E5%8B%A2%E3%82%AE%E3%83%BC%E3%82%AF%E3%83%95%E3%82%A7%E3%82%A2%20(from%3Apanda3tt)%20&src=typed_query&f=live" target="_blank" rel="noopener noreferrer">📍 出展 / 伊勢ギーク・フェア 2025</a></h3>
+                    <p>三重県！じっくり見れてよかった！</p>
                 </article>
                 <article class="timeline-card">
                     <div class="timeline-meta">
@@ -234,8 +250,8 @@
                         <span class="pill pill-type">Event</span>
                     </div>
                     <div class="event-date">2025年10月18日(土)～19日(日)</div>
-                    <h3><a href="https://x.com/panda3tt/status/1980230351248412750" target="_blank" rel="noopener noreferrer">📍 出展 / NT名古屋</a></h3>
-                    <p>ギュウギュウ詰めの懇親会楽しかった</p>
+                    <h3><a href="https://x.com/search?q=%23NT%E5%90%8D%E5%8F%A4%E5%B1%8B%20(from%3Apanda3tt)%20&src=typed_query&f=live" target="_blank" rel="noopener noreferrer">📍 出展 / NT名古屋</a></h3>
+                    <p>ギュウギュウ詰めの懇親会楽しかった！</p>
                 </article>
                 <article class="timeline-card">
                     <div class="timeline-meta">
@@ -243,8 +259,16 @@
                         <span class="pill pill-type">Event</span>
                     </div>
                     <div class="event-date">2025年9月6日(土)・7日(日)</div>
-                    <h3><a href="https://x.com/panda3tt/status/1964132506049069432" target="_blank" rel="noopener noreferrer">📍 出展 / NT東京</a></h3>
+                    <h3><a href="https://x.com/search?q=%23NT%E6%9D%B1%E4%BA%AC%20(from%3Apanda3tt)%20&src=typed_query&f=live" target="_blank" rel="noopener noreferrer">📍 出展 / NT東京</a></h3>
                     <p>ptとしての初出展！</p>
+                </article>
+                <article class="timeline-card accent">
+                    <div class="timeline-meta">
+                        <span class="pill pill-year">2025</span>
+                        <span class="pill pill-type">Award</span>
+                    </div>
+                    <h3><a href="https://protopedia.net/event/hl2025" target="_blank" rel="noopener noreferrer">🏆 野生のプロトタイピング賞 by 鈴木 まなみ</a></h3>
+                    <p>ヒーローズ・リーグ 2025</p>
                 </article>
                 <article class="timeline-card accent">
                     <div class="timeline-meta">
@@ -323,7 +347,7 @@
                             <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
                         </svg>
                     </a>
-                    <a href="https://github.com/pt711" class="social-icon github" target="_blank" rel="noopener noreferrer" title="GitHub">
+                    <a href="https://github.com/pt-da-yooon" class="social-icon github" target="_blank" rel="noopener noreferrer" title="GitHub">
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
                             <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
                         </svg>
@@ -351,5 +375,9 @@
     </footer>
 
     <script src="script.js"></script>
+    <!-- Image preview overlay (used by click-to-preview) -->
+    <div id="image-preview-overlay" aria-hidden="true">
+        <img id="image-preview-img" alt="preview" src="" />
+    </div>
 </body>
 </html>
