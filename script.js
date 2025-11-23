@@ -1,4 +1,17 @@
-﻿// smooth scroll
+﻿(function preloadPreviewImages() {
+    // プレビューで使う主要画像をユーザ操作前にプリロードしておく
+    try {
+        const preloadList = ['img/pt_desu.png'];
+        preloadList.forEach(src => {
+            const i = new Image();
+            i.src = src;
+        });
+    } catch (e) {
+        // 無視
+    }
+})();
+
+// スムーススクロール
 (document.querySelectorAll('a[href^="#"]') || []).forEach(anchor => {
     anchor.addEventListener('click', function (e) {
         e.preventDefault();
@@ -9,7 +22,7 @@
     });
 });
 
-// add a soft shadow to the header on scroll
+// スクロール時にヘッダーへソフトな影を付与
 let lastScroll = 0;
 const header = document.querySelector('header');
 const hero = document.querySelector('#hero');
@@ -30,86 +43,122 @@ window.addEventListener('scroll', () => {
     lastScroll = currentScroll;
 });
 
-// project card click (hook for modal etc.)
+// プロジェクトカードのクリック（モーダル等のフック）
 (document.querySelectorAll('.project-card') || []).forEach(item => {
     item.addEventListener('click', function() {
         console.log('Work item clicked:', this.querySelector('h3')?.textContent || '');
     });
 });
 
-// About セクションの動画自動再生フォールバック
+// DOM 準備完了後に各種初期化を行う
 document.addEventListener('DOMContentLoaded', () => {
+    // About セクションの動画自動再生フォールバック
     const video = document.getElementById('aboutIntro');
     const container = document.querySelector('.about-video');
-    const overlay = document.querySelector('.about-video .play-overlay');
-    if (!video || !container) return;
+    const playOverlay = document.querySelector('.about-video .play-overlay');
+    if (video && container) {
+        // 動画フォーマット非対応ブラウザではコンテナ自体を非表示にする
+        let canPlay = false;
+        const sources = video.querySelectorAll('source');
+        if (sources.length) {
+            sources.forEach(s => {
+                const type = s.type || '';
+                if (type && video.canPlayType && video.canPlayType(type) !== '') {
+                    canPlay = true;
+                }
+            });
+        } else {
+            if (video.canPlayType && video.canPlayType('video/mp4') !== '') canPlay = true;
+        }
 
-    // 動画フォーマット非対応ブラウザではコンテナ自体を非表示にして
-    // 「何もない」ように見せる（ユーザーに気付かれない程度）
-    let canPlay = false;
-    const sources = video.querySelectorAll('source');
-    if (sources.length) {
-        sources.forEach(s => {
-            const type = s.type || '';
-            if (type && video.canPlayType && video.canPlayType(type) !== '') {
-                canPlay = true;
-            }
-        });
-    } else {
-        // source がない場合は一般的な mp4 の再生可否を確認
-        if (video.canPlayType && video.canPlayType('video/mp4') !== '') canPlay = true;
-    }
+        if (!canPlay) {
+            try { container.style.display = 'none'; } catch (e) {}
+        } else {
+            // 自動再生を試行（多くのブラウザは muted の場合に自動再生を許可）
+            const tryPlay = () => {
+                const playPromise = video.play();
+                if (playPromise !== undefined) {
+                    playPromise.then(() => {
+                        try { container.style.display = 'block'; } catch (e) {}
+                        if (playOverlay) playOverlay.style.display = 'none';
+                    }).catch(() => {
+                        try { container.style.display = 'none'; } catch (e) {}
+                    });
+                }
+            };
 
-    if (!canPlay) {
-        try { container.style.display = 'none'; } catch (e) {}
-        return;
-    }
+            // 初回試行
+            tryPlay();
 
-    // 再生を試みる（多くのブラウザは muted の場合に自動再生を許可する）
-    const tryPlay = () => {
-        const playPromise = video.play();
-        if (playPromise !== undefined) {
-            playPromise.then(() => {
-                // 自動再生成功：動画領域を表示し、オーバーレイを隠す
-                try { container.style.display = 'block'; } catch (e) {}
-                if (overlay) overlay.style.display = 'none';
-            }).catch(() => {
-                // 自動再生がブロックされた場合は、コンテナごと非表示にする
+            // タブが再び表示されたときに再試行
+            document.addEventListener('visibilitychange', () => {
+                if (document.visibilityState === 'visible') tryPlay();
+            });
+
+            // 再生エラー時は控えめに非表示
+            video.addEventListener('error', () => {
                 try { container.style.display = 'none'; } catch (e) {}
             });
+
+            // クリックで再生 / 一時停止を切り替え（ミュート維持）
+            video.addEventListener('click', (e) => {
+                e.preventDefault();
+                try {
+                    if (video.paused) {
+                        video.muted = true;
+                        video.play().catch(() => {});
+                    } else {
+                        video.pause();
+                    }
+                } catch (err) {
+                    // 無視
+                }
+            });
         }
-    };
+    }
 
-    // 初回試行
-    tryPlay();
+    // 画像プレビュー: クリックで拡大表示（左から入って一時停止、右へ退出）
+    const overlay = document.getElementById('image-preview-overlay');
+    const img = document.getElementById('image-preview-img');
+    if (!overlay || !img) return;
 
-    // オーバーレイのクリック処理は無効化（自動再生ができない場合は何も表示しない方針）
+    // 指定した src でプレビューを開始するヘルパー
+    function showPreview(src) {
+        if (!src) return;
+        img.src = src;
+        overlay.style.display = 'flex';
+        // アニメーションを再起動するためクラスを更新
+        overlay.classList.remove('playing');
+        setTimeout(() => {
+            overlay.classList.add('playing');
+            overlay.setAttribute('aria-hidden', 'false');
+        }, 20);
+    }
 
-    // 画面が見えない（タブ切替など）だった場合の再試行
-    document.addEventListener('visibilitychange', () => {
-        if (document.visibilityState === 'visible') tryPlay();
+    // アニメーション終了時に即時非表示（フェードなし）
+    img.addEventListener('animationend', () => {
+        overlay.classList.remove('playing');
+        overlay.setAttribute('aria-hidden', 'true');
+        img.src = '';
+        overlay.style.display = 'none';
     });
-    
-    // 再生エラーが出たら目立たないようにコンテナを消す
-    video.addEventListener('error', () => {
-        try {
-            container.style.display = 'none';
-        } catch (e) {}
-    });
 
-    // クリックで再生 / 一時停止を切り替え
-    video.addEventListener('click', (e) => {
-        e.preventDefault();
-        try {
-            if (video.paused) {
-                // 自動再生条件を満たすためミュートは維持
-                video.muted = true;
-                video.play().catch(() => {});
-            } else {
-                video.pause();
-            }
-        } catch (err) {
-            // 無視
-        }
+    // メニュー、ヒーロー、プロジェクト画像へクリックハンドラを付与
+    // メニューアイコン（ロゴ）
+    const logoImg = document.querySelector('.logo-icon');
+    if (logoImg) {
+        logoImg.addEventListener('click', (e) => {
+            e.preventDefault();
+            showPreview('img/pt_desu.png');
+        });
+    }
+
+    // プロジェクトサムネイル
+    document.querySelectorAll('.project-thumb img').forEach(el => {
+        el.addEventListener('click', (e) => {
+            e.stopPropagation();
+            e.preventDefault();
+            showPreview(el.src);
+        });
     });
 });
